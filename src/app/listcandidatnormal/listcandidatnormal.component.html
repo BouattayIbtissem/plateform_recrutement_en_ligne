@@ -1,0 +1,89 @@
+<!--=================================
+inner banner -->
+<div class="header-inner bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="jobber-user-info">
+              <div class="profile-avatar">
+                <img class="img-fluid " src="http://localhost:8083/candidat/files/{{cand.image}}" alt="">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+              <div class="profile-avatar-info ms-4">
+                 <h5>{{cand.username}}</h5>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=================================
+  inner banner -->
+  
+  
+  
+  <!--=================================
+  Manage Candidates -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="user-dashboard-info-box table-responsive pb-4 mb-0">
+            <table class="table manage-candidates-top mb-0">
+              <thead>
+             
+              </thead>
+              <tbody>
+                <h5 >liste  candidature : </h5>
+                <tr class="candidates-list" *ngFor="let p of listcandidature| paginate : {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
+                  <td class="title">
+                    <div class="thumb">
+  
+                    <img class="img-fluid" src="http://localhost:8083/entreprise/files/{{p.offre.entreprise.logo}}" alt=""> 
+                    </div>
+                    <div class="candidate-list-details">
+                      <div class="candidate-list-info">
+                        <div class="candidate-list-title">
+                           Offre :<h5 class="mb-0">{{p.offre.title}}</h5>
+                         
+                        </div>
+                        <div class="candidate-list-option">
+                          <ul class="list-unstyled">
+                          Status :  <h5 class="mb-0">{{p.status}}</h5>
+                          
+                            <!-- <li><i class="fas fa-filter pe-1"></i>offre : {{p.offre.title}}</li> -->
+                            <!-- <li><i class="fas fa-map-marker-alt pe-1"></i>lieu offre: {{p.offre.lieu.address_offre}}</li> -->
+                            <!-- <li><i class="fas fa-map-marker-alt pe-1"></i>lieu offre: {{p.offre.lieu.address_offre}}</li> -->
+                        
+                          </ul>
+                          <!-- <h3 class="mb-0"><a href="#"  [routerLink]="['/home/cventreprise',p.id]">voir CV candidature:  CV </a></h3> -->
+                        </div>
+                      </div>
+                    </div>
+              
+                 
+                    <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                      <!-- <li><a href="#" class="text-primary" data-bs-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye">accepted</i></a></li>
+                      <li><a href="#" class="text-info" data-bs-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                      <li><a  class="text-danger" data-bs-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt">refuse</i></a></li> -->
+                      <!-- <button class="text-danger"(click)="refuseCandidature(p,p.id)">refuse</button> -->
+                      <!-- <button class="text-danger"(click)="acceptCandidature(p,p.id)" >accpter</button> -->
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <div class="row">
+            <div class="page-link b-radius-none" >
+              <pagination-controls  class="pagination justify-content-center" previousLabel="Prev" nextLabel="Next"
+                [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--=================================
+  Manage Candidates -->
+

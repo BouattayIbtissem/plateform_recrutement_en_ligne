@@ -1,0 +1,132 @@
+
+<section class="space-ptb">
+    <div class="container">
+      <div class="row">
+        <!--=================================
+        sidebar -->
+        <div class="col-lg-3">
+          <div class="sidebar">
+            <div class="widget">
+              <div class="widget-title widget-collapse">
+                <h6>Local</h6>
+                <a class="ms-auto" data-bs-toggle="collapse" href="#dateposted" role="button" aria-expanded="false" aria-controls="dateposted"> <i class="fas fa-chevron-down"></i> </a>
+              </div>
+              <div class="collapse show" id="dateposted">
+                <div class="widget-content">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="dateposted1" (change)="filtrageadress($event)" value="sousse">
+                    <label class="form-check-label" for="dateposted1">SOUSSE</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="dateposted2" (change)="filtrageadress($event)" value="monastir" value="MONASTIR">
+                    <label class="form-check-label" for="dateposted2">MONASTIR</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="dateposted3" (change)="filtrageadress($event)" value="TUNIS" value="tunis">
+                    <label class="form-check-label" for="dateposted3">TUNIS</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="dateposted4" (change)="filtrageadress($event)" value="SFAX" value="sfax">
+                    <label class="form-check-label" for="dateposted4">SFAX</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="dateposted5" (change)="filtrageadress($event)" value="france" value="FRANCE">
+                    <label class="form-check-label" for="dateposted5">FRANCE</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="widget">
+              <div class="widget-title widget-collapse">
+                <h6>Specialism</h6>
+                <a class="ms-auto" data-bs-toggle="collapse" href="#specialism" role="button" aria-expanded="false" aria-controls="specialism"> <i class="fas fa-chevron-down"></i> </a>
+              </div>
+              <div class="collapse show" id="specialism">
+                <div class="widget-content">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="specialism1">
+                    <label class="form-check-label" for="specialism1">IT Contractor</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="specialism2">
+                    <label class="form-check-label" for="specialism2">Charity & Voluntary</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="specialism3">
+                    <label class="form-check-label" for="specialism3">Digital & Creative</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="specialism4">
+                    <label class="form-check-label" for="specialism4">Estate Agency</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="specialism5">
+                    <label class="form-check-label" for="specialism5">Graduate</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <!--=================================
+        sidebar -->
+        <div class="col-lg-9">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h6 class="mb-0">Showing 1-10 of <span class="text-primary">28 Employer</span></h6>
+            </div>
+          </div>
+          <div class="job-filter mb-4 d-sm-flex align-items-center">
+            <div class="job-alert-bt"> <a class="btn btn-md btn-dark" href="#"><i class="fa fa-envelope"></i>Get job alert </a> </div>
+            <div class="job-shortby ms-sm-auto d-flex align-items-center">
+              <form class="form-inline">
+                <div class="input-group mb-0 align-items-center">
+                  <label class="justify-content-start me-2">Sort by :</label>
+                  <div class="short-by">
+                    <select class="form-control basic-select">
+                      <option>Newest</option>
+                      <option>Oldest</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-4" *ngFor="let p of listentreprise | paginate : {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
+              <div class="employers-grid text-center">
+                <div class="employers-list-logo">
+                  <img class="img-fluid" src="http://localhost:8083/entreprise/files/{{p.logo}}" alt="">
+                </div>
+                <div class="employers-list-details">
+                  <div class="employers-list-info">
+                    <div class="employers-list-title">
+                      <h5 class="mb-0"><a href="employer-detail.html">{{p.username}}</a></h5>
+                    </div>
+                    <div class="employers-list-option">
+                      <ul class="list-unstyled">
+                        <li><i class="fas fa-filter pe-1"></i>{{p.domaine}}</li>
+                        <li><i class="fas fa-map-marker-alt pe-1"></i>{{p.local}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="employers-list-position">
+                  <a class="btn btn-sm btn-dark" href="#">Open position</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="page-link b-radius-none" >
+              <pagination-controls  class="pagination justify-content-center" previousLabel="Prev" nextLabel="Next"
+                [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

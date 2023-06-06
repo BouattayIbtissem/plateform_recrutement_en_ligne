@@ -1,0 +1,78 @@
+<header class="header bg-dark">
+    <nav class="navbar navbar-static-top navbar-expand-lg header-sticky">
+      <div class="container-fluid">
+        <button id="nav-icon4" type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          <img class="img-fluid" src="assets/images/logo.svg" alt="logo">
+        </a>
+        <div class="navbar-collapse collapse justify-content-start">
+          <ul class="nav navbar-nav">
+            <li class="nav-item dropdown active">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/']">Home<i class="fas fa-chevron-down fa-xs"></i></a>
+
+            </li>
+ 
+      
+            <li class="nav-item dropdown">
+              <a  *ngIf="testinvisibleconnect()== true && role =='ROLE_ENTREPRISE'"  class="nav-link dropdown-toggle"  href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dashboard Entreprise <i class="fas fa-chevron-down fa-xs"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="['/detailentreprise']"> YOUR PROFIL</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/changepasswordentreprise']">Change Password</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/listcandidat']">LIST CANDIDAT</a></li>
+                <li><a class="dropdown-item" href="employer-listing-map.html"></a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle" href="javascript:void(0)">OFFRE <i class="fas fa-chevron-right fa-xs"></i></a>
+                    <ul class="dropdown-menu left-side">
+                      <li><a class="dropdown-item" [routerLink]="['/offre']">AJOUT OFFRE</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/listoffre']">LISTE OFFRE</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/detailoffre']">DETAIL OFFRE</a></li>
+                     
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle" href="javascript:void(0)">CANDIDATURE <i class="fas fa-chevron-right fa-xs"></i></a>
+                    <ul class="dropdown-menu left-side">
+                      <li><a class="dropdown-item" [routerLink]="['/listecandidature']">LISTE CANDIDATURE</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a  *ngIf="testinvisibleconnect()== true && role =='ROLE_CANDIDAT'"  class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dashboard CANDIDAT <i class="fas fa-chevron-down fa-xs"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="['/candidat']">YOUR PROFIL</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/changepasswordcandidat']">CHANGE PASSWORD</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/detailcandidat']">Candidate detail</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle" href="javascript:void(0)">OFFRE <i class="fas fa-chevron-right fa-xs"></i></a>
+                    <ul class="dropdown-menu left-side">
+                      <li><a class="dropdown-item" [routerLink]="['/listeoffrecandidat']">LISTE OFFRE</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/listcandidatnormal']">LISTE candidature</a></li>
+                      
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" [routerLink]="['/listentreprisecandidat']">LISTE ENTREPRISE</a></li>
+                <li><a class="dropdown-item"[routerLink]="['/myresumecv']" >My Resume <span class="badge bg-danger ms-2">CV</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="add-listing">
+            <div class="login d-inline-block me-4">
+              <a  data-bs-toggle="modal" data-bs-target="#exampleModalCenter" *ngIf="!testinvisibleconnect()"[routerLink]="['/home/login']"><i class="far fa-user pe-2"></i>Sign in</a>
+            </div>
+            <a  class="btn btn-white btn-md" (click)=" logout()"> <i class="fas fa-plus-circle"></i> Logout</a>
+          </div>
+      </div>
+    </nav>
+  </header>
+  
+

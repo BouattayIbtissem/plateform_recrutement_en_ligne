@@ -1,0 +1,109 @@
+<!--=================================
+inner banner -->
+<div class="header-inner bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="jobber-user-info">
+              <div class="profile-avatar">
+                <img class="img-fluid " src="http://localhost:8083/entreprise/files/{{entreprise.logo}}" alt="">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+              <div class="profile-avatar-info ms-4">
+                 <h5>{{entreprise.username}}</h5>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=================================
+  inner banner -->
+  
+  
+  
+  <!--=================================
+  Manage Candidates -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="user-dashboard-info-box table-responsive pb-4 mb-0">
+            <table class="table manage-candidates-top mb-0">
+              <thead>
+                <tr>
+                  <th>Candidate Name</th>
+                  <th class="text-center">Status</th>
+                  <th class="action text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="candidates-list" *ngFor="let p of listcandidature">
+                  <td class="title">
+                    <div class="thumb">
+                      <img class="img-fluid" src="http://localhost:8083/candidat/files/{{p.candidat.image}}" alt="">
+                    </div>
+                    <div class="candidate-list-details">
+                      <div class="candidate-list-info">
+                        <div class="candidate-list-title">
+                          <h5 class="mb-0">{{p.candidat.name}}</h5>
+                        </div>
+                        <div class="candidate-list-option">
+                          <ul class="list-unstyled">
+                            <li><i class="fas fa-filter pe-1"></i>offre : {{p.offre.title}}</li>
+                            <li><i class="fas fa-map-marker-alt pe-1"></i>lieu offre: {{p.offre.lieu.address_offre}}</li>
+                            <!-- <li><i class="fas fa-map-marker-alt pe-1"></i>lieu offre: {{p.offre.lieu.address_offre}}</li> -->
+                        
+                          </ul>
+                          <h3 class="mb-0"><a href="#"  [routerLink]="['/home/cventreprise',p.id]">voir CV candidature:  CV </a></h3>
+                        </div>
+                      </div>
+                    </div>
+              
+
+
+
+
+
+
+
+
+                    
+                 
+             
+                  </td>
+                  <td>
+                  <div class="candidate-list-details">
+                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                    <!-- <li><a href="#" class="text-primary" data-bs-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye">accepted</i></a></li>
+                    <li><a href="#" class="text-info" data-bs-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                    <li><a  class="text-danger" data-bs-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt">refuse</i></a></li> -->
+                     <button  class="text-primary" data-bs-toggle="tooltip" title="" data-original-title="view" (click)="refuseCandidature(p,p.id)">refuse</button>
+                    <button class="text-danger"(click)="acceptCandidature(p,p.id)" >accpter</button>
+                  </ul>
+                  </div>
+                </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          <div class="row">
+            <div class="col-12 text-center mt-3 mb-4 mt-sm-3">
+              <ul class="pagination justify-content-center mb-0">
+                <li class="page-item disabled"> <span class="page-link b-radius-none">Prev</span> </li>
+                <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">25</a></li>
+                <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--=================================
+  Manage Candidates -->

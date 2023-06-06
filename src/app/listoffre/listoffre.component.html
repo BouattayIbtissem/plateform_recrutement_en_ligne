@@ -1,0 +1,150 @@
+<!--=================================
+inner banner -->
+<div class="header-inner bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="candidates-user-info">
+            <div class="jobber-user-info">
+              <div class="profile-avatar">
+                <img class="img-fluid " src="http://localhost:8083/entreprise/files/{{entreprise.logo}}" alt="">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+              <div class="profile-avatar-info ms-4">
+                <h3>{{  entreprise.username}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=================================
+  inner banner -->
+  
+  <!--=================================
+  Dashboard Nav -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sticky-top secondary-menu-sticky-top">
+            <div class="secondary-menu">
+              <ul class="list-unstyled mb-0">
+                <li><a href="dashboard-candidates.html">Dashboard</a></li>
+                <li><a [routerLink]="['/home/offre']">AJOUT OFFRE</a></li>
+                <li><a class="active" [routerLink] ="['/home/listoffre']">Liste Offre</a></li>
+                <li><a [routerLink] ="['/home/listcandidat']">Manage Candidates</a></li>
+                <li><a [routerLink] ="['/home/listcandidature']">candidature</a></li>
+                <li><a href="login.html" (click)="logout()">Log Out</a></li>
+  
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--=================================
+  Dashboard Nav -->
+  
+  <!--=================================
+  Manage Jobs -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="user-dashboard-info-box mb-0">
+            <div class="row mb-4">
+              <div class="col-md-7 col-sm-5 d-flex align-items-center">
+                <div class="section-title-02 mb-0 ">
+                  <h4 class="mb-0">liste Offre</h4>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-7 mt-3 mt-sm-0">
+                <div class="search">
+                  <i class="fas fa-search"></i>
+                  <input type="text" class="form-control" placeholder="Search....">
+                </div>
+              </div>
+            </div>
+            <div class="user-dashboard-table table-responsive">
+              <table class="table table-bordered">
+                <thead class="bg-light">
+                  <tr >
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let p of listoffre| paginate : {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
+                    <th scope="row">{{p.id}}
+                      <p class="mb-1 mt-2">{{p.title}}</p>
+                      <p class="mb-0">description:{{p.description}}</p>
+                      <p class="mb-0">salaire:{{p.salaire}}</p>
+                     
+                    
+                    </th>
+
+                    <td>
+                      <ul class="list-unstyled mb-0 d-flex">
+                        <li><a  class="text-primary" data-bs-toggle="tooltip" title="view" [routerLink]="['/home/detailoffre',p.id]"><i class="far fa-eye"></i></a></li>
+                        <li><a  class="text-info" data-bs-toggle="tooltip" title="Edit" (click)="open(content,p)"><i class="fas fa-pencil-alt"></i></a></li>
+                        <li><a  class="text-danger" data-bs-toggle="tooltip" title="Delete" (click)="deleteoffre(p.id)"><i class="far fa-trash-alt"></i></a></li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row justify-content-center">
+              <div class="page-link b-radius-none" >
+                <pagination-controls  class="pagination justify-content-center" previousLabel="Prev" nextLabel="Next"
+                  [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+              </div>  
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--=================================
+  Manage Jobs -->
+  <ng-template #content let-modal>
+    <div class="modal-header"><h4> update offre</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+          <form [formGroup]="offreform">
+        <div class="mb-3">
+          <label for="dateOfBirth">id</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="id"	/>
+                      
+            <!-- <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button> -->
+          </div>
+        </div>
+      
+          <div class="mb-3">
+          <label for="dateOfBirth">title</label>
+                  <input
+                  type="text" class="form-control" formControlName="title"	/>
+        </div>
+        <div class="mb-3">
+          <label for="dateOfBirth">description</label>
+                  <input
+                  type="text" class="form-control" formControlName="description"	/>
+        </div>
+        <div class="mb-3">
+          <label for="dateOfBirth">salaire</label>
+                  <input
+                  type="text" class="form-control" formControlName="salaire"	/>
+        </div>
+          </form>
+    </div>
+ 
+      <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');updateoffre()">Save</button>
+    </div>
+  </ng-template>
